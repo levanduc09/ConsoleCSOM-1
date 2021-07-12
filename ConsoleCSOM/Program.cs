@@ -97,7 +97,7 @@ namespace ConsoleCSOM
                         fldLink = new FieldLinkCreationInformation();
                         fldLink.Field = field;
                         contentType.FieldLinks.Add(fldLink);
-                        contentType.Update(false);
+                        contentType.Update(true);
                         await context.ExecuteQueryAsync();
                     }
                 }
@@ -126,6 +126,7 @@ namespace ConsoleCSOM
             {
                 txtFldAbout.DefaultValue = "About Default";
                 txtFldAbout.Update();
+                txtFldAbout.UpdateAndPushChanges(true);
             }
             if (taxonomyFieldCity != null)
             {
@@ -144,6 +145,7 @@ namespace ConsoleCSOM
                 //set default value for a taxonomy field
                 taxColumn.DefaultValue = validatedValue.Value;
                 taxColumn.Update();
+                taxColumn.UpdateAndPushChanges(true);
                 context.ExecuteQuery();
             }
             await context.ExecuteQueryAsync();
